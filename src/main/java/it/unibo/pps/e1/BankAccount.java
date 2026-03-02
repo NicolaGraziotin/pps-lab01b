@@ -1,21 +1,15 @@
 package it.unibo.pps.e1;
 
-public class BankAccount {
+public interface BankAccount {
 
-    private CoreBankAccount base = new CoreBankAccount();
+    /** @return the current balance of the account */
+    int getBalance();
 
-    public int getBalance() {
-        return base.getBalance();
-    }
+    /** Deposit the given amount of money into the account.
+     * The amount must be positive. */
+    void deposit(int amount);
 
-    public void deposit(int amount) {
-        base.deposit(amount);
-    }
-
-    public void withdraw(int amount) {
-        if (this.getBalance() < amount){
-            throw new IllegalStateException();
-        }
-        base.withdraw(amount + 1);
-    }
+    /** Withdraw the given amount of money from the account.
+     * The amount must be positive and less than or equal to the current balance. */
+    void withdraw(int amount);
 }
